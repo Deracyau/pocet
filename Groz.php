@@ -28,7 +28,7 @@ function http_visi($url,$data){
 }
 function get($url){
 	global $cok;
-//$proxy = 'http://yxzhzcjc:iz5vp2thb4j5@188.74.210.207:6286';
+$proxy = 'http://yxzhzcjc:iz5vp2thb4j5@188.74.210.207:6286';
   $header = array(
 	 "Host: satoshiclick.net", 
 	//"cookie: ".$cok."",
@@ -46,12 +46,14 @@ function get($url){
   curl_setopt($ch, CURLOPT_COOKIE,TRUE);
   curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
   curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
+  curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
+  curl_setopt($ch, CURLOPT_PROXY, $proxy);
   return curl_exec($ch);
 }
 
 function post($url,$data){
 	global $cok;
-//$proxy = 'http://yxzhzcjc:iz5vp2thb4j5@188.74.210.207:6286';
+$proxy = 'http://yxzhzcjc:iz5vp2thb4j5@188.74.210.207:6286';
   $header = array(
 	 "Host: satoshiclick.net", 
      "cache-control: max-age=0", 
@@ -71,6 +73,8 @@ function post($url,$data){
   curl_setopt($ch, CURLOPT_COOKIE,TRUE);
   curl_setopt($ch, CURLOPT_COOKIEFILE,"cookie.txt");
   curl_setopt($ch, CURLOPT_COOKIEJAR,"cookie.txt");
+  curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
+  curl_setopt($ch, CURLOPT_PROXY, $proxy);
   return curl_exec($ch);
 }
 
